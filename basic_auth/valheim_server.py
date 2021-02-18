@@ -4,7 +4,6 @@ import time
 
 from flask import Flask
 
-_RESET_TIMEOUT_SEC = 120
 _STATE = {"on": "Online", "off": "Offline", "reset": "Resetting"}
 
 
@@ -19,7 +18,7 @@ class ValheimServer(object):
     def get_server_status(self):
         if self.curr_state == _STATE['reset']:
             time_since_reset = time.perf_counter() - self.reset_start_time
-            if time_since_reset < _RESET_TIMEOUT_SEC:
+            if time_since_reset < self.flask.config['RESET_TIMER']:
                 return self.curr_state
 
         stat = os.system('systemctl is-active --quiet valheimserver')
@@ -31,8 +30,7 @@ class ValheimServer(object):
         if self.curr_state == _STATE['reset']:
             return self.curr_state
 
-        subprocess.Popen(['ls', '-l'])
-    #    subprocess.Popen('/usr/local/bin/valheimbackup')
+        subprocess.Popen(self.flask.config['RESET_CMD'])
         self.curr_state = _STATE['reset']
         self.reset_start_time = time.perf_counter()
 
