@@ -27,7 +27,7 @@ def main(argv):
         elif opt in ("-r"):
             reset_cmd = arg
         elif opt in ("-t"):
-            reset_timer = arg
+            reset_timer = int(arg)
 
     if len(user) == 0 or len(password) == 0 or len(backup_dir) == 0:
         printHelp()
