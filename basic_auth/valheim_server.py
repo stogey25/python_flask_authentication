@@ -30,7 +30,11 @@ class ValheimServer(object):
         if self.curr_state == _STATE['reset']:
             return self.curr_state
 
-        subprocess.Popen(self.flask.config['RESET_CMD'])
+        try:
+            subprocess.Popen(self.flask.config['RESET_CMD'])
+        except Exception:
+            print("Reset command invalid: %s" % self.flask.config['RESET_CMD'])
+
         self.curr_state = _STATE['reset']
         self.reset_start_time = time.perf_counter()
 
