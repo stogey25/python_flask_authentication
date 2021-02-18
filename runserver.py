@@ -46,7 +46,7 @@ def main(argv):
 def printHelp():
     print('Usage: ',
           __file__,
-          '-u <user name> -p <password> -d <backup_dir> -r <reset_cmd>')
+          '-u <user name> -p <password> -d <backup_dir> -r <reset_cmd> -t <reset_timer>')
 
 
 if __name__ == '__main__':
