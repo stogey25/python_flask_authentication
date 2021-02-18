@@ -1,8 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <style>
+        h1 {
+            text-align: center;
+            font-family: helvetica;
+        }
+        h2 {
+            text-align: center;
+            font-family: helvetica;
+        }
+        div {text-align: center;}
+        .Online {
+            color: green;
+            font-weight: bold;
+            font-style: italic;
+        }
+        .Offline {
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
+        .Resetting{
+            color: rgba(226, 226, 0, 0.918);
+            font-weight: bold;
+            font-style: italic;
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            font-family: helvetica;
+        }
+    </style>
+    <meta http-equiv="refresh" content="5">
 </head>
 <body>
-<h3>{{message}}</h3>
+<h1>Welcome to the Offical Stonks Valheim Web Server, ya filthy animal!</h1>
+<h2><span>Current Server Status: </span><span class={{message}}>{{message}}</span></h2>
+<div>
+    <form action="resetButton">
+        <button class=button>Reset Valheim Server</button>
+    </form>
+    <br>
+</div>
+<div>
+    <a href="https://nodecraft.com/support/games/valheim/how-to-quickly-find-and-join-your-valheim-server">How to Connect to the Server</a>
+    <a href="{{ url_for('files') }}">Nightly World Backups</a>
+<div>
 </body></html>

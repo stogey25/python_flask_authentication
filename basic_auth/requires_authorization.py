@@ -2,8 +2,10 @@ from basic_auth import app
 from flask import request, jsonify
 import functools
 
+
 def ok_user_and_password(username, password):
     return username == app.config['USERNAME'] and password == app.config['PASSWORD']
+
 
 def authenticate():
     message = {'message': "Authenticate."}
@@ -13,6 +15,7 @@ def authenticate():
     resp.headers['WWW-Authenticate'] = 'Basic realm="Main"'
 
     return resp
+
 
 def requires_authorization(f):
     @functools.wraps(f)

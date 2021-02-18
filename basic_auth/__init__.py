@@ -1,6 +1,7 @@
-from flask import Flask
+from basic_auth.valheim_server import ValheimServer
 
-app = Flask(__name__)
+server = ValheimServer(__name__)
+app = server.flask
 
-import basic_auth.RESTapi, basic_auth.WebPage
-    
+import basic_auth.RESTapi
+import basic_auth.WebPage
